@@ -1,8 +1,8 @@
-// model to update 'user results table (voting/rating'
+// model to update 'user results table (voting/rating)'
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("Example", {
+  var Vote = sequelize.define("Vote", {
     text: DataTypes.STRING,
     description: DataTypes.TEXT
   });
-  return Example;
+  return Vote;
 };
