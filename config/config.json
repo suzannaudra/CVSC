@@ -6,6 +6,13 @@
     "host": "localhost",
     "dialect": "mysql"
   },
+  "demo": {
+    "username": "root",
+    "password": "password",
+    "database": "project2_db",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
   "test": {
     "username": "root",
     "password": null,

@@ -2,11 +2,11 @@
 // data_names model
 module.exports = function(sequelize, DataTypes) {
     var DataNames = sequelize.define("DataNames", {
-      // data_id: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: false,
-      //   primaryKey: true,
-      // },
+      dataId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -14,14 +14,37 @@ module.exports = function(sequelize, DataTypes) {
       description: DataTypes.TEXT,
       x_name: DataTypes.TEXT,
       y_name: DataTypes.TEXT
-    });
+    },
+    {timestamps: false}
+    );
 
     // build association with data_values table
     DataNames.associate = function(models) {
-      DataNames.hasMany(models.DataValues, {
+      
+      DataNames.hasMany(models.DataValues, { // 1 => * DataValues
+        foreignKey: {
+            name: "dataId",
+            allowNull: false
+        },
         onDelete: "cascade"
       });
+
+      DataNames.hasMany(models.UserResults, { // 1 => * DataValues
+        foreignKey: {
+            name: "data1",
+            allowNull: false
+        }
+      });
+
+      DataNames.hasMany(models.UserResults, { // 1 => * DataValues
+        foreignKey: {
+            name: "data2",
+            allowNull: false
+        }
+      });
+    
     };
+
 
     return DataNames;
 };

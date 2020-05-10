@@ -2,14 +2,6 @@
 // create model for user results table
 module.exports = function(sequelize, DataTypes) {
     var UserResults = sequelize.define("UserResults", {
-      data_set1: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      data_set2: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
       correlation_votes: {
         type: DataTypes.INTEGER,
       },
@@ -18,9 +10,19 @@ module.exports = function(sequelize, DataTypes) {
       },
       user_comment: {
         type: DataTypes.TEXT
-      }      
+      },
+        data1: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: 'compositeIndex'
+      },
+      data2: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: 'compositeIndex'
+      },      
     });
-    
+
     return UserResults;
   };
 
