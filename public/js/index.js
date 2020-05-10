@@ -22,12 +22,12 @@ var API = {
       type: "GET"
     });
   },
-//   getExamples: function() {
-//     return $.ajax({
-//       url: "api/examples",
-//       type: "GET"
-//     });
-//   },
+  //   getExamples: function() {
+  //     return $.ajax({
+  //       url: "api/examples",
+  //       type: "GET"
+  //     });
+  //   },
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -99,6 +99,18 @@ var handleDeleteBtnClick = function() {
     refreshExamples();
   });
 };
+
+function getVote(int) {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("poll").innerHTML = this.responseText;
+    }
+  };
+  xmlhttp.open("GET", "vote.php?vote=" + int, true);
+  xmlhttp.send();
+  console.log(int);
+}
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);

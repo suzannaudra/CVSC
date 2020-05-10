@@ -1,7 +1,8 @@
-
 // data_names model
 module.exports = function(sequelize, DataTypes) {
-    var DataNames = sequelize.define("DataNames", {
+  var DataNames = sequelize.define(
+    "DataNames",
+    {
       dataId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -10,45 +11,44 @@ module.exports = function(sequelize, DataTypes) {
       name: {
         type: DataTypes.STRING,
         allowNull: false
-        },
+      },
       description: DataTypes.TEXT,
       x_name: DataTypes.TEXT,
       y_name: DataTypes.TEXT
     },
-    {timestamps: false}
-    );
+    { timestamps: false }
+  );
 
-    // build association with data_values table
-    DataNames.associate = function(models) {
-      
-      DataNames.hasMany(models.DataValues, { // 1 => * DataValues
-        foreignKey: {
-            name: "dataId",
-            allowNull: false
-        },
-        onDelete: "cascade"
-      });
+  // build association with data_values table
+  DataNames.associate = function(models) {
+    DataNames.hasMany(models.DataValues, {
+      // 1 => * DataValues
+      foreignKey: {
+        name: "dataId",
+        allowNull: false
+      },
+      onDelete: "cascade"
+    });
 
-      DataNames.hasMany(models.UserResults, { // 1 => * DataValues
-        foreignKey: {
-            name: "data1",
-            allowNull: false
-        }
-      });
+    DataNames.hasMany(models.UserResults, {
+      // 1 => * DataValues
+      foreignKey: {
+        name: "data1",
+        allowNull: false
+      }
+    });
 
-      DataNames.hasMany(models.UserResults, { // 1 => * DataValues
-        foreignKey: {
-            name: "data2",
-            allowNull: false
-        }
-      });
-    
-    };
+    DataNames.hasMany(models.UserResults, {
+      // 1 => * DataValues
+      foreignKey: {
+        name: "data2",
+        allowNull: false
+      }
+    });
+  };
 
-
-    return DataNames;
+  return DataNames;
 };
-
 
 //   CREATE TABLE data_names
 // (

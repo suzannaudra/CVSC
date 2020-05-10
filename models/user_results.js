@@ -2,6 +2,10 @@
 // create model for user results table
 module.exports = function(sequelize, DataTypes) {
     var UserResults = sequelize.define("UserResults", {
+      dataId: {
+        type: DataTypes.INTEGER,
+        required: true
+      },
       correlation_votes: {
         type: DataTypes.INTEGER,
       },
