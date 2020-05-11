@@ -14,8 +14,16 @@ module.exports = function(app) {
     db.DataNames.findAll({
         include: [db.DataValues]
     }).then(function(dbResult) {
-      res.json(dbResult); // => to D3 API
-      console.table(JSON.stringify(dbResult, null, 2));
+    //   res.json(dbResult); // => to D3 API
+    //   console.table(JSON.stringify(dbResult, null, 2));
+        // console.log("dbResult: ", dbResult);
+        console.log("dbResult.DataNames: ", dbResult.DataNames);
+        console.log("dbResult[0].DataNames: ", dbResult[0].DataNames);
+        console.log("dbResult[0].dataId: ", dbResult[0].dataId);
+        console.log(dbResult[0]);
+        console.log(dbResult[0].name);
+        console.log(dbResult[0].DataValues);
+        console.log(dbResult[0].DataValues)
       
     });
   

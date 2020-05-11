@@ -16,12 +16,15 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+
+
+  getChartData: function() {
     return $.ajax({
       url: "api/chartdata",
       type: "GET"
     });
   },
+
 //   getExamples: function() {
 //     return $.ajax({
 //       url: "api/examples",
@@ -35,6 +38,16 @@ var API = {
     });
   }
 };
+
+// loadChartData (analog to refreshExamples function below)
+var loadChartData = function() {
+    API.getChartData().then(function(data) {
+        var $chartData = data.map(function(chartdata) {
+            var $a
+        })
+    });
+
+}
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
