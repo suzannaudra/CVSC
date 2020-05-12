@@ -2,12 +2,10 @@
 // data values table model
 module.exports = function(sequelize, DataTypes) {
     var DataValues = sequelize.define("DataValues", {
-      // data_id: {
-      //     type: DataTypes.INTEGER,
-      //     allowNull: false,
-      //     primaryKey: true,
-      // },
-      name: DataTypes.STRING,
+      dataId: {
+          type: DataTypes.INTEGER,
+          allowNull: false
+      },
       x_value: {
         type: DataTypes.INTEGER,
         allowNull: false
@@ -16,7 +14,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.DECIMAL(10,2),
         allowNull: false
       }
-    });
+    },
+    {timestamps: false});
 
     // associate with data_names table
     
@@ -24,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       
       DataValues.belongsTo(models.DataNames, {
         foreignKey: {
+          name: "dataId",
           allowNull: false
         }
       });
