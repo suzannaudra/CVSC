@@ -34,23 +34,21 @@ module.exports = function(app) {
         db.UserResults.update({
             correlation_votes: userResult.correlation_votes + 1},
             { where: { dataId: req.params.dataId }});
-      });
-  }).then(function(){
+      }).then(function(){
       res.json({});
-
+      })
   });
   
     app.post("/api/data/causation/:dataId", function(req, res) {
       db.UserResults.findOne({ where: {dataId: req.params.dataId} }).then(userResult => { console.log(req.params.dataID);
         console.log(userResult.causation_votes)
         
-        db.UserResults.update({ causation_votes: userResult.causation_votes + 1}, { where: { dataId: req.params.dataId }});
-      });
-    }).then(function(){
-        res.json({});
+        db.UserResults.update({ causation_votes: userResult.causation_votes + 1}, { where: { dataId: req.params.dataId }}).then(function(){
+          res.json({});
+      }); 
+      })
 
-    });
-};
+    })
     
-         
+  }
 
