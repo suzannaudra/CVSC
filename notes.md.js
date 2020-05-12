@@ -1,9 +1,9 @@
 
 // example data model for chart api
 
-[ {key: 'Year', value: '2010'}, {key: 'x1', value: '5'} ],
-[ {key: 'Year', value: '2011'}, {key: 'x1', value: '10'} ],
-[ {key: 'Year', value: '2012'}, {key: 'x1', value: '15'} ]
+[ {key: 'Year', value: '2010'}, {key: 'y1', value: '5'} ],
+[ {key: 'Year', value: '2011'}, {key: 'y1', value: '10'} ],
+[ {key: 'Year', value: '2012'}, {key: 'y1', value: '15'} ]
 
 // example parsing function
 var data = [];
