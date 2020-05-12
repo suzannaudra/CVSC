@@ -29,9 +29,10 @@ fclose($fp);
 <head>
  <style type="text/css">
    .q1{
-      width:  <?php echo intval(100*round($correlation/($causation+$correlation),2));?>px;
+      width:  
+      <?php echo intval(100*round($correlation/($causation+$correlation),2));?>px;
       height: 20px;
-      background-color: red; 
+      background-color: blue; 
       animation-name: first;
       animation-duration: 1s;
       animation-delay: 0s;
