@@ -36,6 +36,7 @@ module.exports = function(app) {
             { where: { dataId: req.params.dataId }});
       }).then(function(){
       res.json({});
+      res.reload;
       })
   });
   
@@ -45,6 +46,7 @@ module.exports = function(app) {
         
         db.UserResults.update({ causation_votes: userResult.causation_votes + 1}, { where: { dataId: req.params.dataId }}).then(function(){
           res.json({});
+          res.reload;
       }); 
       })
 
