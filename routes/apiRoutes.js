@@ -30,7 +30,6 @@ module.exports = function(app) {
     db.UserResults.findOne({ where: {dataId: req.params.dataId} }).then(function(userResult) {
         console.log(req.params.dataID);
         console.log(userResult.causation_votes);
-       
         db.UserResults.update({
             correlation_votes: userResult.correlation_votes + 1},
             { where: { dataId: req.params.dataId }});
