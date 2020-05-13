@@ -22,7 +22,6 @@ module.exports = function(sequelize, DataTypes) {
   // build association with data_values table
   DataNames.associate = function(models) {
     DataNames.hasMany(models.DataValues, {
-      // 1 => * DataValues
       foreignKey: {
         name: "dataId",
         allowNull: false
@@ -31,7 +30,6 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     DataNames.hasMany(models.UserResults, {
-      // 1 => * DataValues
       foreignKey: {
         name: "data1",
         allowNull: false
@@ -39,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     DataNames.hasMany(models.UserResults, {
-      // 1 => * DataValues
+    
       foreignKey: {
         name: "data2",
         allowNull: false
