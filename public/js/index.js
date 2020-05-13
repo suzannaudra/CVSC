@@ -4,6 +4,56 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+$("#correlation").on("click", function() {
+   console.log("click");
+   $.ajax({
+       type: "POST",
+       url: "/api/data/correlation/1",
+       data: {},
+       success: function() {
+           console.log("correlation");
+       }
+   }).then(votes => {
+      console.log("new votes: ", votes.correlation_votes, votes.causation_votes);
+       sessionStorage.setItem("correlation_votes", votes.correlation_votes);
+       sessionStorage.setItem("causation_votes", votes.causation_votes);
+
+       $("#correlation-div").append($("<p>").text("Correlation Votes: " + votes.correlation_votes));
+       $("#causation-div").append("<p>").text("Causation Votes: " + votes.causation_votes);
+     
+   });
+});
+
+$("#causation").on("click", function() {
+ console.log("click");
+ $.ajax({
+   type: "POST",
+   url: "/api/data/causation/1",
+   data: {},
+   success: function(){
+     console.log("causation")
+   }
+ }).then(votes => {
+       console.log("new votes: ", votes.correlation_votes, votes.causation_votes);
+       sessionStorage.setItem("correlation_votes", votes.correlation_votes);
+       sessionStorage.setItem("causation_votes", votes.causation_votes);
+       
+       $("#correlation-div").append($("<p>").text("Correlation Votes: " + votes.correlation_votes));
+       $("#causation-div").append("<p>").text("Causation Votes: " + votes.causation_votes);
+   });
+});
+
+$("#causation").click(function(){
+   $("#causation").hide();
+   $("#correlation").hide();
+});
+$("#correlation").click(function(){
+   $("#correlation").hide();
+   $("#causation").hide();
+});
+
+
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -112,53 +162,16 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-function getVote(int) {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("poll").innerHTML = this.responseText;
-    }
-  };
-  xmlhttp.open("GET", "vote.php?vote=" + int, true);
-  xmlhttp.send();
-  console.log(int);
-  console.log();
-}
+// function getVote(int) {
+//   var xmlhttp = new XMLHttpRequest();
+//   xmlhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//       document.getElementById("poll").innerHTML = this.responseText;
+//     }
+//   };
+//   xmlhttp.open("GET", "vote.php?vote=" + int, true);
+//   xmlhttp.send();
+//   console.log(int);
+//   console.log();
+// }
 
-$("#correlation").on("click", function() {
-    console.log("click");
-    $.ajax({
-        type: "POST",
-        url: "/api/data/correlation/1",
-        data: {},
-        success: function() {
-            console.log("correlation");
-        }
-    }).then(db => {
-        console.log("new votes: ", db.correlation_votes, db.causation_votes); 
-      
-    });
-});
-
-$("#causation").on("click", function() {
-  console.log("click");
-  $.ajax({
-    type: "POST",
-    url: "/api/data/causation/1",
-    data: {},
-    success: function(){
-      console.log("causation")
-    }
-  }).then(db => {
-        console.log("new votes: ", db.correlation_votes, db.causation_votes); 
-    });
-});
-
-$("#causation").click(function(){
-  $("#causation").hide();
-  $("#correlation").hide();
-});
-$("#correlation").click(function(){
-  $("#correlation").hide();
-  $("#causation").hide();
-});

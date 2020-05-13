@@ -18,14 +18,9 @@
 
 <body>
     <div class="container">
-        <!-- <div class="container">
-            <img class="responsive-img" src="images/Conatiner1.png">
-            <h1>Correlation VS Causation</h1>
-            <h6> Welcome! Do you ever wonder if events with similar data sets are related? Whether it's a correlation or
-                causation. We have some data for you to explore. Vote for whether you think there is a correlation or
-                causation between the two data sets. </h6> -->
-        <br>
-        <br>
+        
+      <br><br>
+
         <div class="row">
             <div class="col s6">
                 <h1>Correlation VS Causation</h1>
@@ -55,20 +50,9 @@
                         causation between the two data sets.</center>
                 </h6>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br><br>
-            <br>
-            <br>
+
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
             <button id="getstarted" class="waves-effect waves-light btn-large">Get Started</button>
             <div class="col s6">
                 <p> </p>
@@ -76,6 +60,7 @@
         </div>
     </div>
 
+    <!-- main chart -->
     <canvas id="myChart" width="400" height="400"></canvas>
     <script>
         $.get("/api/", (data) => {
@@ -123,26 +108,15 @@
 
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>
+
     <div class="container">
         <div class="row">
             <div class="row">
-                <div class="col s12 m6 l3">
+                <div id="correlation-div" class="col s12 m6 l3">
                     <button id="correlation" value="0" name="vote" class="waves-effect waves-light btn-large correlation">Correlation</button>
                 </div>
-                <div class="col s12 m6 l3">
+                <div id="causation-div" class="col s12 m6 l3">
                     <div class="col s12 m4 l2">
                         <button id="causation" value="1" name="vote" class="waves-effect waves-light btn-large causation">Causation</button>
                     </div>
