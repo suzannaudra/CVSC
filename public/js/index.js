@@ -24,12 +24,12 @@ var API = {
       type: "GET"
     });
   },
-  //   getExamples: function() {
-  //     return $.ajax({
-  //       url: "api/examples",
-  //       type: "GET"
-  //     });
-  //   },
+    getExamples: function() {
+      return $.ajax({
+        url: "api/examples",
+        type: "GET"
+      });
+    },
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -126,15 +126,18 @@ function getVote(int) {
 }
 
 $("#correlation").on("click", function() {
-  console.log("click");
-  $.ajax({
-    type: "POST",
-    url: "/api/data/correlation/1",
-    data: {},
-    success: function(){
-      console.log("running")
-    }
-  });
+    console.log("click");
+    $.ajax({
+        type: "POST",
+        url: "/api/data/correlation/1",
+        data: {},
+        success: function() {
+            console.log("correlation");
+        }
+    }).then(db => {
+        console.log("new votes: ", db.correlation_votes, db.causation_votes); 
+      
+    });
 });
 
 $("#causation").on("click", function() {
@@ -146,5 +149,16 @@ $("#causation").on("click", function() {
     success: function(){
       console.log("causation")
     }
-  });
+  }).then(db => {
+        console.log("new votes: ", db.correlation_votes, db.causation_votes); 
+    });
+});
+
+$("#causation").click(function(){
+  $("#causation").hide();
+  $("#correlation").hide();
+});
+$("#correlation").click(function(){
+  $("#correlation").hide();
+  $("#causation").hide();
 });

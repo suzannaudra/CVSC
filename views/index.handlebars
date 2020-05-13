@@ -11,10 +11,6 @@
           <div class="form-group">
             <label for="example-description">Welcome, Do you ever wonder if events with similar data sets are related? Whether it's a correlation or causation.  We have some data for you to explore. Vote for whether you think there is a correlation or causation between the two data sets. </label>
             <br>
-            <svg viewBox="0 0 ${width} 33" style="max-width: ${width}px; font: 10px sans-serif; display: block;">
-            <rect fill="steelblue" x="${x(0)}" width="${x(count) - x(0)}" height="33"></rect>
-             <text fill="white" text-anchor="end" x="${x(count)}" dx="-6" dy="21">${count}</text>
-            </svg>GRAPH GOES HERE
             <br>
             <br>
       <div class="bodycon">
@@ -57,10 +53,10 @@ Causation: <input class="causation" type="radio" name="vote" value="1" id="causa
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: dataSet.labels2,
+        labels: data.dataSet.labels2,
         datasets: [{
             label: '# of Votes',
-            data: dataSet.values2,
+            data: data.dataSet.values2,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

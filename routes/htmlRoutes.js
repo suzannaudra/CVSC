@@ -1,17 +1,14 @@
 // 🌎 HTML ROUTES
-
+var path = require("path")
 var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.DataNames.findAll({}).then(function(dbExamples) {
-      console.log(dbExamples);
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+  app.get("/", function(req, res) { {
+      
+      res.render("index");
+      // console.log(res , "response")
+    };
   });
   
   // Load example page and pass in an example by id
