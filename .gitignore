@@ -3,3 +3,5 @@ node_modules
 npm-debug.log
 .env
 project-2.code-workspace
+notes.md.js
+notes.md

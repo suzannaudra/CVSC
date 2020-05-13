@@ -2,10 +2,14 @@
 // create model for user results table
 module.exports = function(sequelize, DataTypes) {
     var UserResults = sequelize.define("UserResults", {
-      dataId: {
-        type: DataTypes.INTEGER,
-        required: true
+      userResId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
       },
+    //     dataId: {
+    //     type: DataTypes.INTEGER,
+    //     required: true
+    //   },
       correlation_votes: {
         type: DataTypes.INTEGER,
       },
@@ -24,20 +28,24 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: 'compositeIndex'
-      },      
-    });
+      },    
+    },
+    { timestamps: false });
+
+    // build association with data_values table
+    // UserResults.associate = function(models) {
+        
+    //     UserResults.belongsToMany(models.DataNames, {
+    //         foreignKey: {
+    //         name: "userResId",
+    //         allowNull: false
+    //         }
+    //         //      onDelete: "cascade"
+    //     });
+
+    // }
 
     return UserResults;
-  };
+};
 
-//   CREATE TABLE user_results
-// (
-// 	id int NOT NULL AUTO_INCREMENT,
-//     data_set1 INT NOT NULL,
-//     data_set2 INT NOT NULL,
-// 	correlation_votes INT DEFAULT 0, 
-//     causation_votes INT DEFAULT 0, 
-//     user_comment VARCHAR(255), -- optional
-// 	PRIMARY KEY (id)
-// );
 

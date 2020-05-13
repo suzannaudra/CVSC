@@ -1,4 +1,6 @@
-<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
 <div id="home">
   <div class="container">
     <div class="row">
@@ -9,10 +11,6 @@
           <div class="form-group">
             <label for="example-description">Welcome, Do you ever wonder if events with similar data sets are related? Whether it's a correlation or causation.  We have some data for you to explore. Vote for whether you think there is a correlation or causation between the two data sets. </label>
             <br>
-            <svg viewBox="0 0 ${width} 33" style="max-width: ${width}px; font: 10px sans-serif; display: block;">
-            <rect fill="steelblue" x="${x(0)}" width="${x(count) - x(0)}" height="33"></rect>
-             <text fill="white" text-anchor="end" x="${x(count)}" dx="-6" dy="21">${count}</text>
-            </svg>GRAPH GOES HERE
             <br>
             <br>
       <div class="bodycon">
@@ -47,7 +45,49 @@ Causation: <input class="causation" type="radio" name="vote" value="1" id="causa
       </div>
     </div>
   </div>
-</div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
-</html>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+   $.get("/api/chartdata", (data) => { 
+     var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: data.dataSet.labels2,
+        datasets: [{
+            label: '# of Votes',
+            data: data.dataSet.values2,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+})};
+
+
+
+
+
