@@ -18,10 +18,16 @@ var API = {
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/chartdata",
       type: "GET"
     });
   },
+  //   getExamples: function() {
+  //     return $.ajax({
+  //       url: "api/examples",
+  //       type: "GET"
+  //     });
+  //   },
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -94,6 +100,39 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+function getVote(int) {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("poll").innerHTML = this.responseText;
+    }
+  };
+  xmlhttp.open("GET", "vote.php?vote=" + int, true);
+  xmlhttp.send();
+  console.log(int);
+  console.log();
+}
+
+$("#correlation").on("click", function() {
+  console.log("click");
+  $.ajax({
+    type: "POST",
+    url: "/api/data/correlation/1",
+    data: {},
+    success: function(){
+      console.log("running")
+    }
+  });
+});
+
+$("#causation").on("click", function() {
+  console.log("click");
+  $.ajax({
+    type: "POST",
+    url: "/api/data/causation/1",
+    data: {},
+    success: function(){
+      console.log("causation")
+    }
+  });
+});

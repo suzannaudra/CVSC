@@ -1,10 +1,21 @@
+// 💻 API ROUTES
+
 var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/chartdata", function(req, res) {
+    // TODO: select a table with two different data sets for charting
+    //      1 - get the number of unique data sets by dataId
+    //      2 - randomly select TWO different data sets
+    //      3 - return as arrays with helper function here, or offload to client?
+
+    // TEMP QUERY FOR TESTING
+    db.DataNames.findAll({
+      include: [db.DataValues]
+    }).then(function(dbResult) {
+      res.json(dbResult); // => to D3 API
+      console.table(JSON.stringify(dbResult, null, 2));
     });
   });
 
@@ -15,10 +26,31 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  app.post("/api/data/correlation/:dataId", function(req, res) {
+    db.UserResults.findOne({ where: {dataId: req.params.dataId} }).then(function(userResult) {
+        console.log(req.params.dataID);
+        console.log(userResult.causation_votes);
+       
+        db.UserResults.update({
+            correlation_votes: userResult.correlation_votes + 1},
+            { where: { dataId: req.params.dataId }});
+      }).then(function(){
+      res.json({});
+      res.reload;
+      })
   });
-};
+  
+    app.post("/api/data/causation/:dataId", function(req, res) {
+      db.UserResults.findOne({ where: {dataId: req.params.dataId} }).then(userResult => { console.log(req.params.dataID);
+        console.log(userResult.causation_votes)
+        
+        db.UserResults.update({ causation_votes: userResult.causation_votes + 1}, { where: { dataId: req.params.dataId }}).then(function(){
+          res.json({});
+          res.reload;
+      }); 
+      })
+
+    })
+    
+  }
+
