@@ -2,7 +2,7 @@ body {
     background-color: #EEF1FA;
     font-family: 'Fira Sans', sans-serif;
     padding-left: -40px;
-    background-image: url(images/Conatiner1.png);
+    background-image: url(../images/Conatiner1.png);
     background-repeat: no-repeat;
     background-position: top right;
 }
@@ -116,6 +116,10 @@ a {
     size: 75%;
 }
 
+#myChart {
+  padding-bottom: 100px;
+}
+
 #correlation, #causation {
     background-color: #ED5E74;
 }
@@ -136,7 +140,7 @@ textarea {
 
 footer {
     text-align: center;
-    background-image: url(images/Footer.png);
+    background-image: url(../Images/Footer.png);
 }
 
 #link {
