@@ -1,6 +1,8 @@
 
 ### Schema
 
+--ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+
 -- PLEASE DON'T RUN THIS YET!!! JUST SAVING PROGRESS REMOTELY
 DROP DATABASE IF EXISTS project2_db;
 CREATE DATABASE project2_db;
