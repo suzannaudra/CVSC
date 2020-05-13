@@ -2,28 +2,13 @@
 
 var db = require("../models");
 
-
 module.exports = function(app) {
   // Get all examples
 app.get("/api/chartdata", function(req, res) {
-    // TODO: select a table with two different data sets for charting
-    //      1 - get the number of unique data sets by dataId
-    //      2 - randomly select TWO different data sets
-    //      3 - return as arrays with helper function here, or offload to client?
 
-    // TEMP QUERY FOR TESTING
     db.DataNames.findAll({
       include: [db.DataValues]
     }).then(function(dbResult) {
-         
-        //   console.log(JSON.stringify(dbResult, null, 2));
-        // console.log("dbResult: ", dbResult);
-
-        // console.log(dbResult[0].name); // => data set 1 name
-        // console.log(dbResult[0].DataValues[0].x_value); // => x value 1 of data set 1
-        // console.log(dbResult[0].DataValues[1].x_value); // => x value 2 of data set 1
-        // console.log(dbResult[0].DataValues[0].y_value); // => y value 1 of data set 1
-        // console.log(dbResult[1].DataValues[1].y_value); // => y value 2 of data set 2
 
         var dataSet = {};
         dataSet.Name1 =  dbResult[0].name;
@@ -42,8 +27,6 @@ app.get("/api/chartdata", function(req, res) {
 
         res.json({data: dataSet}); // => to D3 API
 
-        // console.log(JSON.stringify(dataSet, null, 2));
-
     });
   });
     app.get("/api/getvotes/:userResId", function(req, res) {
@@ -53,8 +36,6 @@ app.get("/api/chartdata", function(req, res) {
           var votedata = {}
           votedata.causation = result.causation_votes ;
           votedata.correlation = result.correlation_votes ;
-            console.log("new votes cor/caus:", result.correlation_votes, result.causation_votes)
-            console.log(votedata, "PLEASE?")
             res.json({data: votedata});
         });
     });
@@ -77,12 +58,7 @@ app.get("/api/chartdata", function(req, res) {
             db.UserResults.findOne({
                 where: {userResId: req.params.userResId}
             }).then(result => {
-              var votedata = {}
-              votedata.causation = result.causation_votes ;
-              votedata.correlation = result.correlation_votes ;
-                console.log("new votes cor/caus:", result.correlation_votes, result.causation_votes)
-                console.log(votedata, "votedataPOSTED")
-                res.json({data: votedata});
+                res.json({correlation_votes: result.correlation_votes, causation_votes: result.causation_votes});
             });
 
         }).catch(function(err) {
@@ -117,8 +93,7 @@ app.post("/api/data/causation/:userResId", function(req, res, next) {
             db.UserResults.findOne({
                 where: {userResId: req.params.userResId}
             }).then(result => {
-                console.log("new votes cor/caus:", result.correlation_votes, result.causation_votes)
-                res.json({data: result});
+               res.json({correlation_votes: result.correlation_votes, causation_votes: result.causation_votes});
             });
         }).catch(function(err) {
             // Whenever a validation or flag fails, an error is thrown
