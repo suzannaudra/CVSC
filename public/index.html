@@ -70,7 +70,7 @@
     <div style="height: 400px ; width:800px ;">
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
-           
+           window.onload = function () {
             $.get("/api/chartdata", (data) => {
                 console.log(data , "data")
                 // var ctx = document.getElementById('myChart');
@@ -93,8 +93,9 @@
                     }]
                 };
 
-                window.onload = function () {
+                
                     var ctx = document.getElementById("myChart").getContext("2d");
+                    // console.log(document.getElementById("myChart"))
                     window.myLine = Chart.Line(ctx, {
                         data: lineChartData,
                         options: {
@@ -125,9 +126,10 @@
                             }
                         }
                     });
+                })
                 };
 
-            })
+            
         </script>
     </div>
     <!-- end of main chart div -->
