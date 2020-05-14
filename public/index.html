@@ -71,7 +71,7 @@
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
             $.get("/api/chartdata", (data) => {
-                // console.log(data , "data") seeing what data is returned
+                console.log(data , "data")
                 // var ctx = document.getElementById('myChart');
                 var lineChartData = {
                     labels: data.data.labels1,
