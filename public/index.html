@@ -16,9 +16,9 @@
 
 <body>
     <div class="container">
-        
+
         <br><br>
-         <!-- title row -->
+        <!-- title row -->
         <div class="row">
             <div class="col s6">
                 <h1>Correlation VS Causation</h1>
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-         <!-- subtitle row -->
+        <!-- subtitle row -->
         <div class="row">
             <div class="col s6">
                 <h6 id="text-focus-in">
@@ -54,46 +54,46 @@
             </div>
 
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            
+
             <!-- get started button -->
-            
-            
+
+
             <div class="col s6">
                 <p> </p>
             </div>
 
         </div>
 
-    </div> 
+    </div>
 
     <!-- main chart div -->
     <div style="height: 400px ; width:800px ;">
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
-           window.onload = function () {
-            $.get("/api/chartdata", (data) => {
-                console.log(data , "data")
-                // var ctx = document.getElementById('myChart');
-                var lineChartData = {
-                    labels: data.data.labels1,
-                    datasets: [{
-                        label: data.data.yName1,
-                        // borderColor: window.chartColors.red,
-                        // backgroundColor: window.chartColors.red,
-                        fill: false,
-                        data: data.data.values1,
-                        yAxisID: "y-axis-1",
-                    }, {
-                        label: data.data.yName2,
-                        // borderColor: window.chartColors.blue,
-                        // backgroundColor: window.chartColors.blue,
-                        fill: false,
-                        data: data.data.values2,
-                        yAxisID: "y-axis-2"
-                    }]
-                };
+            window.onload = function () {
+                $.get("/api/chartdata", (data) => {
+                    console.log(data, "data")
+                    // var ctx = document.getElementById('myChart');
+                    var lineChartData = {
+                        labels: data.data.labels1,
+                        datasets: [{
+                            label: data.data.Name1,
+                            // borderColor: window.chartColors.red,
+                            // backgroundColor: window.chartColors.red,
+                            fill: false,
+                            data: data.data.values1,
+                            yAxisID: "y-axis-1",
+                        }, {
+                            label: data.data.Name2,
+                            // borderColor: window.chartColors.blue,
+                            // backgroundColor: window.chartColors.blue,
+                            fill: false,
+                            data: data.data.values2,
+                            yAxisID: "y-axis-2"
+                        }]
+                    };
 
-                
+
                     var ctx = document.getElementById("myChart").getContext("2d");
                     // console.log(document.getElementById("myChart"))
                     window.myLine = Chart.Line(ctx, {
@@ -127,44 +127,29 @@
                         }
                     });
                 })
-                };
-
-            
+            };
         </script>
     </div>
     <!-- end of main chart div -->
 
-    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>    <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
     <div class="container">
         <div class="row">
-            <div class="row">
-                <div id="correlation-div" class="col s12 m6 l3">
-                    <button id="correlation" value="0" name="vote"
-                        class="waves-effect waves-light btn-large correlation">Correlation</button>
-                </div>
-                <div class="col s12 m6 l3">
-                    <div  id="causation-div"class="col s12 m4 l2">
-                        <button id="causation" value="1" name="vote"
-                            class="waves-effect waves-light btn-large causation">Causation</button>
-                    </div>
-                </div>
-                <div class="col s12 m6 l3">
-                    <p> </p>
-                </div>
-                <div class="col s12 m6 l3">
-                    <p> </p>
+            <div id="correlation-div" class="col s16">
+                <button id="correlation" value="0" name="vote"
+                    class="waves-effect waves-light btn-large correlation">Correlation</button>
+            </div>
+
+            <div class="col s12 m4">
+                <div id="causation-div" class="col s6">
+                    <button id="causation" value="1" name="vote"
+                        class="waves-effect waves-light btn-large causation">Causation</button>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        
+    </div>
 
-    </div>
-    </div>
-    </div>
-    </div>
     <br>
     <br>
     <br>
@@ -180,7 +165,7 @@
         <br>
         <p1> David Flores, Suzann Kowalski, Iva Trecakov, Jared VanHook</p1>
         <br>
-        <p2 class="footer-copyright">&copy; 2020 May, all rights resrved</p2>
+        <p2 class="footer-copyright">&copy; 2020 May, all rights reserved</p2>
         <!-- </div>
         </div>
         </div> -->

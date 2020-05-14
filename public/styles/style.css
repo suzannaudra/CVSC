@@ -1,25 +1,25 @@
 body {
-    background-color: #EEF1FA;
-    font-family: 'Fira Sans', sans-serif;
-    padding-left: -40px;
-    background-image: url(../images/Conatiner1.png);
-    background-repeat: no-repeat;
-    background-position: top right;
+  background-color: #EEF1FA;
+  font-family: 'Fira Sans', sans-serif;
+  padding-left: -40px;
+  background-image: url(../images/Conatiner1.png);
+  background-repeat: no-repeat;
+  background-position: top right;
 }
 
 .container {
-    padding: -20px;
+  padding: -20px;
 }
 
 h1 {
-    padding-top: 50px;
-    color: #4144DB;
-    text-align: right;
+  padding-top: 50px;
+  color: #4144DB;
+  text-align: right;
 }
 
 #slide-in-left {
-	-webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 /* ----------------------------------------------
@@ -34,39 +34,42 @@ h1 {
  * animation slide-in-left
  * ----------------------------------------
  */
- @-webkit-keyframes slide-in-left {
-    0% {
-      -webkit-transform: translateX(-1000px);
-              transform: translateX(-1000px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
-    }
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 0;
   }
-  @keyframes slide-in-left {
-    0% {
-      -webkit-transform: translateX(-1000px);
-              transform: translateX(-1000px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
-    }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
   }
-  
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 h6 {
-    color:  gray;
-    font-family: 'Fira Sans', sans-serif;
+  color: gray;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 #text-focus-in {
-	-webkit-animation: text-focus-in 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: text-focus-in 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  -webkit-animation: text-focus-in 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 /* ----------------------------------------------
@@ -81,81 +84,88 @@ h6 {
  * animation text-focus-in
  * ----------------------------------------
  */
- @-webkit-keyframes text-focus-in {
-    0% {
-      -webkit-filter: blur(12px);
-              filter: blur(12px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
-    }
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
   }
-  @keyframes text-focus-in {
-    0% {
-      -webkit-filter: blur(12px);
-              filter: blur(12px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
-    }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
   }
-  
-  
+}
+
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
 
 a {
-    position: center;
+  position: center;
 }
 
 .responsive-image {
-    size: 75%;
+  size: 75%;
 }
 
 #myChart {
   padding-bottom: 100px;
+  margin-left: 30px;
 }
 
-#correlation, #causation {
-    background-color: #ED5E74;
+#correlation,
+#causation {
+  background-color: #ED5E74;
 }
 
-#getstarted {
-    background-color: #3F42DA;
-}
+/* #getstarted {
+  background-color: #3F42DA;
+  margin-left: -97px; */
+
+
 .form-control {
-    text-align: center;
-    color: gray;
+  text-align: center;
+  color: gray;
 }
 
 textarea {
-    height: 250px;
-    color: gray;
-    border-color: gray;
+  height: 250px;
+  color: gray;
+  border-color: gray;
 }
 
 footer {
-    text-align: center;
-    background-image: url(../Images/Footer.png);
+  text-align: center;
+  background-image: url(../Images/Footer.png);
 }
 
 #link {
-    color: white;
+  color: white;
 }
 
 hr {
-    background: linear-gradient(to right, red, yellow);
-    height: 5px;
+  background: linear-gradient(to right, red, yellow);
+  height: 5px;
 }
 
 p1 {
-    color: lightgray;
+  color: lightgray;
 }
 
 .footer-copyright {
-    color: white;
+  color: white;
 }
