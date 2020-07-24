@@ -37,3 +37,6 @@ Causation vs. Correlation is depoloyed on Heroku at: https://gentle-beach-66776.
 - Iva Trecakov
 - Jared VanHook
 - Suzann Kowalski
+
+
+![CVC](CVC.png)
